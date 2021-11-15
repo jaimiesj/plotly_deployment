@@ -27,6 +27,7 @@ function optionChanged(newSample) {
   // Fetch new data each time a new sample is selected
   buildMetadata(newSample);
   buildCharts(newSample);
+  
 }
 
 // Demographics Panel 
@@ -57,42 +58,30 @@ function buildCharts(sample) {
   // 2. Use d3.json to load and retrieve the samples.json file 
   d3.json("samples.json").then((data) => {
     // 3. Create a variable that holds the samples array. 
-    var samples = data.samples;
-    
-
-    var samplesArray = samples.sort((a,b) => a.otu_ids - b.otu_ids).reverse();
 
     // 4. Create a variable that filters the samples for the object with the desired sample number.
-    var topTen = samplesArray.slice(0,11);
 
     //  5. Create a variable that holds the first sample in the array.
-    var first = d3.select("#bar");
+
 
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
-    var otuIds = samplesArray.map(samples => samples.otu_ids)
-    var otuLabels = samplesArray.map(samples => samples.otu_lables)
-    var sampleValues = samplesArray.map(samples => samples.sample_values)
+
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
 
-    var yticks = topTen
+    var yticks = 
 
     // 8. Create the trace for the bar chart. 
-    var barData = [{
-      x: otuLabels,
-      y: sampleValues,
-      type: "bar"      
-    }];
+    var barData = [
+      
+    ];
     // 9. Create the layout for the bar chart. 
     var barLayout = {
-     title: "Top 1- Bacteria Cultures Founds",
-     xaxis: {title: "Bacteria Names"},
-     yaxis: {title: "Number of Cultures"}
-
+     
     };
     // 10. Use Plotly to plot the data with the layout. 
-    Plotly.newPlot("bar", barData, barLayout);
+    
   });
 }
